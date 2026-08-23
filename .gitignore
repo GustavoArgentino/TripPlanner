@@ -17,3 +17,7 @@ frontend/npm-debug.log*
 backend/target/
 backend/HELP.md
 backend/.mvn/wrapper/maven-wrapper.jar
+
+# Secrets
+.env
+*.env
