@@ -1,0 +1,26 @@
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Frontend (Angular / Node)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/npm-debug.log*
+
+# Backend (Maven)
+backend/target/
+backend/HELP.md
+backend/.mvn/wrapper/maven-wrapper.jar
+
+# Secrets
+.env
+*.env
+
+# Agent Harness Kit overview media (promotional, not project content)
+agent-harness-kit/media/
