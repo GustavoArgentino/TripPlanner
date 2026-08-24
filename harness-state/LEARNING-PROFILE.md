@@ -1,7 +1,7 @@
 ---
 schema: harness.learning-profile/v1
 id: learning-profile
-revision: 1
+revision: 2
 status: active
 owner: human:Gustavo
 consent_updated_at: 2026-08-24T00:00:00Z
@@ -27,7 +27,7 @@ source_references: none
 | Skill | Self-assessment | Demonstrated evidence | Confidence |
 | --- | --- | --- | --- |
 | Spring Security / JWT | developing | Módulo 1 backend built end to end (filter chain, stateless auth, JWT issue/validate, BCrypt); 3 real bugs found by independent review and understood/fixed (401 vs 403 entry point, TOCTOU race on duplicate email, case-sensitive email) | medium |
-| Angular standalone auth flows | unknown | none yet — planned for TASK-002 | low |
+| Angular standalone auth flows | developing | Módulo 1 frontend built end to end (signals, functional interceptor/guard, reactive forms); 2 real bugs found by independent review and understood/fixed (`computed()` memoization not tracking time-based expiry, `atob()` Latin1-vs-UTF-8 decoding) | medium |
 
 ## Learning queue
 
@@ -46,4 +46,4 @@ source_references: none
 
 ## Latest debrief
 
-- Módulo 1 (backend) note written at `Obsidian-Estudos/Estudos/TripPlanner/01 - Autenticação & Usuários.md`, 2026-08-24: covers JWT/stateless auth, BCrypt, filter ordering, 401-vs-403 entry point, and the TOCTOU race on duplicate registration — all surfaced as concrete concepts from real bugs the independent review found in this module's implementation.
+- Módulo 1 (backend + frontend, now complete) note updated at `Obsidian-Estudos/Estudos/TripPlanner/01 - Autenticação & Usuários.md`, 2026-08-24: covers JWT/stateless auth, BCrypt, filter ordering, 401-vs-403 entry point, the TOCTOU race on duplicate registration, Angular `computed()` memoization pitfalls, and `atob()` Latin1-vs-UTF-8 decoding — all surfaced as concrete concepts from real bugs the independent review found across both halves of this module's implementation.

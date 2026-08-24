@@ -1,0 +1,16 @@
+<div class="home-page">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Você está autenticado</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Logado como <strong>{{ userEmail() }}</strong>.</p>
+      <p class="placeholder-note">
+        Placeholder do Módulo 1 — o dashboard real chega no Módulo 8.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button color="warn" (click)="logout()">Sair</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
