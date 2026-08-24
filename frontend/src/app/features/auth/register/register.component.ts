@@ -5,6 +5,7 @@ import { RouterLink, Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -19,6 +20,7 @@ import { AuthService } from '../../../core/auth/auth.service';
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatProgressSpinnerModule
   ],
@@ -38,6 +40,12 @@ export class RegisterComponent {
 
   readonly isSubmitting = signal(false);
   readonly errorMessage = signal<string | null>(null);
+  // Purely visual toggle for the password field — does not affect what is sent to the backend.
+  readonly passwordVisible = signal(false);
+
+  togglePasswordVisibility(): void {
+    this.passwordVisible.update((visible) => !visible);
+  }
 
   submit(): void {
     if (this.form.invalid || this.isSubmitting()) {
