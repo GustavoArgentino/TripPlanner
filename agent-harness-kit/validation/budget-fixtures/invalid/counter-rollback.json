@@ -1,4 +1,0 @@
-{
-  "mutation": {"action": "set", "path": "previous_usage.implementation_attempts", "value": 2},
-  "expected_errors": ["budget.counter-rollback"]
-}

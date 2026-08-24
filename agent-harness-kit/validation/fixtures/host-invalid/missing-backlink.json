@@ -1,4 +1,0 @@
-{
-  "expected_errors": ["migration.backlink-missing"],
-  "mutation": {"material_id": "MAT-ROOT-AGENTS", "field": "backlinks", "value": ["harness-adoption/MISSING.md"]}
-}

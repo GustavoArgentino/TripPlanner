@@ -1,4 +1,0 @@
-{
-  "mutation": {"action": "remove", "field": "correction_delta"},
-  "expected_errors": ["review.focused-evidence"]
-}

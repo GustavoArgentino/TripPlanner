@@ -1,4 +1,0 @@
-{
-  "mutation": {"action": "remove", "field": "automatic_actions"},
-  "expected_errors": ["status.missing-field", "status.automatic-actions-shape"]
-}

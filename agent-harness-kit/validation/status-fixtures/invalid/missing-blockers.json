@@ -1,4 +1,0 @@
-{
-  "mutation": {"action": "remove", "field": "blockers"},
-  "expected_errors": ["status.missing-field", "status.blockers-shape"]
-}

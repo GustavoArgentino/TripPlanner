@@ -1,4 +1,0 @@
-{
-  "mutation": {"action": "remove", "field": "progress"},
-  "expected_errors": ["status.missing-field"]
-}

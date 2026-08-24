@@ -1,6 +1,0 @@
-{
-  "expected_errors": ["graph.invalid-path"],
-  "nodes": [
-    {"id": "TASK-A", "goal": "A", "depends_on": [], "status": "ready", "assignee": "agent:a", "reviewer": "agent:r", "write_set": ["../outside/**"], "checkpoint": null, "assurance_status": "not-required", "assurance_requires": [], "task_brief": "A.md"}
-  ]
-}

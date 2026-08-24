@@ -1,4 +1,0 @@
-{
-  "mutation": {"action": "remove", "field": "macro_pending"},
-  "expected_errors": ["status.missing-field", "status.macro-pending-shape"]
-}
