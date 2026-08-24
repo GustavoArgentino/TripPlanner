@@ -21,3 +21,6 @@ backend/.mvn/wrapper/maven-wrapper.jar
 # Secrets
 .env
 *.env
+
+# Agent Harness Kit overview media (promotional, not project content)
+agent-harness-kit/media/
