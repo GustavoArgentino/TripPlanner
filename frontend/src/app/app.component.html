@@ -1,5 +1,22 @@
-<mat-toolbar color="primary">
-  <span>{{ title }}</span>
+<mat-toolbar color="primary" class="app-toolbar">
+  <a routerLink="/" class="app-brand">
+    <mat-icon aria-hidden="true">travel_explore</mat-icon>
+    <span>{{ title }}</span>
+  </a>
+
+  <span class="toolbar-spacer"></span>
+
+  @if (isAuthenticated()) {
+    <a mat-button routerLink="/home">Início</a>
+    <a mat-button routerLink="/trips">Minhas viagens</a>
+    <button mat-stroked-button class="logout-button" (click)="logout()">
+      <mat-icon aria-hidden="true">logout</mat-icon>
+      Sair
+    </button>
+  } @else {
+    <a mat-button routerLink="/login">Entrar</a>
+    <a mat-flat-button class="cta-button" routerLink="/register">Criar conta</a>
+  }
 </mat-toolbar>
 
 <router-outlet></router-outlet>
