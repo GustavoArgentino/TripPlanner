@@ -1,6 +1,8 @@
 package com.gustavo.tripplanner.config;
 
 import com.gustavo.tripplanner.auth.EmailAlreadyInUseException;
+import com.gustavo.tripplanner.itinerary.InvalidItineraryDateException;
+import com.gustavo.tripplanner.itinerary.ItineraryItemNotFoundException;
 import com.gustavo.tripplanner.trip.InvalidTripDatesException;
 import com.gustavo.tripplanner.trip.TripNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -29,6 +31,16 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(InvalidTripDatesException.class)
     public ResponseEntity<Map<String, Object>> handleInvalidTripDates(InvalidTripDatesException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorBody(HttpStatus.BAD_REQUEST, ex.getMessage()));
+    }
+
+    @ExceptionHandler(ItineraryItemNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleItineraryItemNotFound(ItineraryItemNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorBody(HttpStatus.NOT_FOUND, ex.getMessage()));
+    }
+
+    @ExceptionHandler(InvalidItineraryDateException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidItineraryDate(InvalidItineraryDateException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorBody(HttpStatus.BAD_REQUEST, ex.getMessage()));
     }
 
