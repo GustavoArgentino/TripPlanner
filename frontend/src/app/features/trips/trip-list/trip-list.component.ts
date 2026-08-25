@@ -7,6 +7,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { TripResponse } from '../../../core/trips/trip.models';
 import { TripService } from '../../../core/trips/trip.service';
+import { formatDate } from '../trip-date.util';
 
 @Component({
   selector: 'app-trip-list',
@@ -27,10 +28,7 @@ export class TripListComponent implements OnInit {
     this.loadTrips();
   }
 
-  formatDate(isoDate: string): string {
-    const [year, month, day] = isoDate.split('-');
-    return `${day}/${month}/${year}`;
-  }
+  readonly formatDate = formatDate;
 
   deleteTrip(trip: TripResponse): void {
     if (!confirm(`Excluir a viagem "${trip.name}"? Essa ação não pode ser desfeita.`)) {

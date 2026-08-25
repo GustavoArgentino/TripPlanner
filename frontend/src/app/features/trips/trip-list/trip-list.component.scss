@@ -42,6 +42,16 @@
   font-weight: 500;
 }
 
+.trip-title-link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
 .trip-description {
   color: var(--mat-sys-on-surface-variant);
 }

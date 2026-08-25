@@ -12,5 +12,9 @@ export const TRIP_ROUTES: Routes = [
   {
     path: ':id/edit',
     loadComponent: () => import('./trip-form/trip-form.component').then((m) => m.TripFormComponent)
+  },
+  {
+    path: ':id',
+    loadComponent: () => import('./trip-detail/trip-detail.component').then((m) => m.TripDetailComponent)
   }
 ];

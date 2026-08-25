@@ -7,9 +7,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatNativeDateModule } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+import { BrDateAdapter } from '../../../core/date/br-date-adapter';
 import { TripRequest } from '../../../core/trips/trip.models';
 import { TripService } from '../../../core/trips/trip.service';
 
@@ -24,8 +25,16 @@ import { TripService } from '../../../core/trips/trip.service';
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatNativeDateModule,
     MatProgressSpinnerModule
+  ],
+  providers: [
+    // Not MatNativeDateModule: its default NativeDateAdapter parses typed
+    // dd/mm/yyyy input as US-style mm/dd/yyyy regardless of MAT_DATE_LOCALE
+    // (display formatting is locale-aware, parsing typed text isn't). This
+    // keeps native-date's display/format behavior via MAT_NATIVE_DATE_FORMATS
+    // but fixes parsing for pt-BR.
+    { provide: DateAdapter, useClass: BrDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_NATIVE_DATE_FORMATS }
   ],
   templateUrl: './trip-form.component.html',
   styleUrl: './trip-form.component.scss'

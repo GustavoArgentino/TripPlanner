@@ -28,7 +28,9 @@
       @for (trip of trips(); track trip.id) {
         <mat-card class="trip-card">
           <mat-card-header>
-            <mat-card-title>{{ trip.name }}</mat-card-title>
+            <mat-card-title>
+              <a [routerLink]="['/trips', trip.id]" class="trip-title-link">{{ trip.name }}</a>
+            </mat-card-title>
             <mat-card-subtitle>{{ trip.destination }}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
