@@ -1,0 +1,48 @@
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Planejamento de viagens, do jeito certo</span>
+    <h1>Sua próxima viagem, planejada com clareza.</h1>
+    <p class="hero-subtitle">
+      Itinerário, orçamento, clima e rotas em um só lugar — para você aproveitar a viagem
+      em vez de se preocupar com ela.
+    </p>
+
+    <div class="hero-actions">
+      @if (isAuthenticated()) {
+        <a mat-flat-button color="primary" class="cta-primary" routerLink="/trips">
+          <mat-icon aria-hidden="true">luggage</mat-icon>
+          Ver minhas viagens
+        </a>
+      } @else {
+        <a mat-flat-button color="primary" class="cta-primary" routerLink="/register">
+          Começar a planejar
+        </a>
+        <a mat-stroked-button class="cta-secondary" routerLink="/login">Já tenho conta</a>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <h2>Tudo que uma viagem precisa, em um só painel</h2>
+
+  <div class="feature-grid">
+    @for (feature of features; track feature.title) {
+      <mat-card class="feature-card">
+        <img class="feature-image" [src]="feature.imageUrl" [alt]="feature.title" loading="lazy" width="800" height="140" />
+        <mat-card-content>
+          <div class="feature-icon">
+            <mat-icon aria-hidden="true">{{ feature.icon }}</mat-icon>
+          </div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+</section>
+
+<footer class="landing-footer">
+  <p>TripPlanner — projeto pessoal de estudo full-stack.</p>
+</footer>

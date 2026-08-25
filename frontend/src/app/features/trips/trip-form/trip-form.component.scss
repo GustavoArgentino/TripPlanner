@@ -1,0 +1,49 @@
+@use '../trip-shared';
+
+.trip-form-page {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.trip-form-card {
+  width: 100%;
+  max-width: 560px;
+  padding: 1.5rem;
+
+  h1 {
+    margin: 0 0 1.25rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+.trip-form-loading {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.trip-form-dates {
+  display: flex;
+  gap: 1rem;
+
+  mat-form-field {
+    flex: 1;
+  }
+}
+
+.trip-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}

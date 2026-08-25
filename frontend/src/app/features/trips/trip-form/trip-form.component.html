@@ -1,0 +1,73 @@
+<div class="trip-form-page">
+  <mat-card class="trip-form-card">
+    <h1>{{ isEditMode() ? 'Editar viagem' : 'Nova viagem' }}</h1>
+
+    @if (isLoading()) {
+      <div class="trip-form-loading">
+        <mat-spinner diameter="32" strokeWidth="3" aria-label="Carregando viagem"></mat-spinner>
+      </div>
+    } @else {
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nome da viagem</mat-label>
+          <input matInput formControlName="name" required />
+          @if (form.controls.name.invalid && form.controls.name.touched) {
+            <mat-error>Informe um nome para a viagem.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Destino</mat-label>
+          <input matInput formControlName="destination" required />
+          @if (form.controls.destination.invalid && form.controls.destination.touched) {
+            <mat-error>Informe um destino.</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="trip-form-dates">
+          <mat-form-field appearance="outline">
+            <mat-label>Data de início</mat-label>
+            <input matInput [matDatepicker]="startPicker" formControlName="startDate" required />
+            <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+            @if (form.controls.startDate.invalid && form.controls.startDate.touched) {
+              <mat-error>Informe a data de início.</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Data de término</mat-label>
+            <input matInput [matDatepicker]="endPicker" formControlName="endDate" required />
+            <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+            @if (form.controls.endDate.invalid && form.controls.endDate.touched) {
+              <mat-error>Informe a data de término.</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Descrição (opcional)</mat-label>
+          <textarea matInput formControlName="description" rows="3"></textarea>
+        </mat-form-field>
+
+        @if (errorMessage()) {
+          <div class="error-banner" role="alert" aria-live="polite">
+            <span>{{ errorMessage() }}</span>
+          </div>
+        }
+
+        <div class="trip-form-actions">
+          <button mat-button type="button" routerLink="/trips">Cancelar</button>
+          <button mat-flat-button color="primary" type="submit" [disabled]="isSubmitting()">
+            @if (isSubmitting()) {
+              <mat-spinner diameter="20" strokeWidth="3" aria-label="Salvando"></mat-spinner>
+            } @else {
+              Salvar
+            }
+          </button>
+        </div>
+      </form>
+    }
+  </mat-card>
+</div>

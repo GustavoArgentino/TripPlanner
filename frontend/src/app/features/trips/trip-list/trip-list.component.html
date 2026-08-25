@@ -1,0 +1,55 @@
+<div class="trip-list-page">
+  <div class="trip-list-header">
+    <h1>Minhas viagens</h1>
+    <button mat-flat-button color="primary" routerLink="/trips/new">
+      <mat-icon aria-hidden="true">add</mat-icon>
+      Nova viagem
+    </button>
+  </div>
+
+  @if (errorMessage()) {
+    <div class="error-banner" role="alert" aria-live="polite">
+      <mat-icon aria-hidden="true">error_outline</mat-icon>
+      <span>{{ errorMessage() }}</span>
+    </div>
+  }
+
+  @if (isLoading()) {
+    <div class="trip-list-loading">
+      <mat-spinner diameter="32" strokeWidth="3" aria-label="Carregando viagens"></mat-spinner>
+    </div>
+  } @else if (trips().length === 0) {
+    <mat-card class="empty-state">
+      <p>Você ainda não tem nenhuma viagem planejada.</p>
+      <button mat-stroked-button color="primary" routerLink="/trips/new">Criar a primeira viagem</button>
+    </mat-card>
+  } @else {
+    <div class="trip-grid">
+      @for (trip of trips(); track trip.id) {
+        <mat-card class="trip-card">
+          <mat-card-header>
+            <mat-card-title>{{ trip.name }}</mat-card-title>
+            <mat-card-subtitle>{{ trip.destination }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="trip-dates">{{ formatDate(trip.startDate) }} — {{ formatDate(trip.endDate) }}</p>
+            @if (trip.description) {
+              <p class="trip-description">{{ trip.description }}</p>
+            }
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-button [routerLink]="['/trips', trip.id, 'edit']">Editar</button>
+            <button
+              mat-button
+              color="warn"
+              [disabled]="deletingId() === trip.id"
+              (click)="deleteTrip(trip)"
+            >
+              Excluir
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  }
+</div>

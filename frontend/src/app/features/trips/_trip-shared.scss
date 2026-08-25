@@ -1,0 +1,24 @@
+// Shared visual pieces across the Trip feature screens (list/form), reusing
+// the same Material 3 system tokens as the auth screens (see
+// features/auth/_auth-form.scss) so the app stays visually consistent.
+
+.error-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.75rem 0.875rem;
+  border-radius: 12px;
+  background: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
+  font-size: 0.875rem;
+  line-height: 1.35;
+  margin-bottom: 1rem;
+
+  mat-icon {
+    flex: none;
+    font-size: 1.125rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-top: 0.0625rem;
+  }
+}
