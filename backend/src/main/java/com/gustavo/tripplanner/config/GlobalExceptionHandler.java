@@ -1,6 +1,8 @@
 package com.gustavo.tripplanner.config;
 
 import com.gustavo.tripplanner.auth.EmailAlreadyInUseException;
+import com.gustavo.tripplanner.trip.InvalidTripDatesException;
+import com.gustavo.tripplanner.trip.TripNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
@@ -18,6 +20,16 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(EmailAlreadyInUseException.class)
     public ResponseEntity<Map<String, Object>> handleEmailAlreadyInUse(EmailAlreadyInUseException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorBody(HttpStatus.CONFLICT, ex.getMessage()));
+    }
+
+    @ExceptionHandler(TripNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleTripNotFound(TripNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorBody(HttpStatus.NOT_FOUND, ex.getMessage()));
+    }
+
+    @ExceptionHandler(InvalidTripDatesException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidTripDates(InvalidTripDatesException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorBody(HttpStatus.BAD_REQUEST, ex.getMessage()));
     }
 
     @ExceptionHandler(AuthenticationException.class)
